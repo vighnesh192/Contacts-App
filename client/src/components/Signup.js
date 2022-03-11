@@ -12,7 +12,7 @@ function Signup() {
     const handleSubmitClick = (e) => {
         e.preventDefault()
         try {
-            axios.post('http://localhost:3000/user/signup', { email, password, secret })
+            axios.post('http://localhost:8080/user/signup', { email, password, secret })
                 .then((res) => {
                     console.log(res.data)
                     navigate('/signin')

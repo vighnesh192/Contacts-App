@@ -13,7 +13,7 @@ function handleSignupSubmit(e) {
             .then((res) => {
                 console.log(res);
                 localStorage.setItem('token', res.data.token);
-                axios.get('http://localhost:3000/contact/contacts.html')
+                axios.get('http://localhost:8080/contact/contacts.html')
             })
             .catch((err) => console.log('SignUp Error:-', err))
     } catch (error) {

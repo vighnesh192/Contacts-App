@@ -13,7 +13,7 @@ function Contacts() {
     const handleSubmitClick = (e) => {
         e.preventDefault()
         try {
-            axios.post('http://localhost:3000/contact', { name, number, email }, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
+            axios.post('http://localhost:8080/contact', { name, number, email }, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
                 .then((res) => {
                     console.log("Contact Posted", res.data)
                     setcontacts([...contacts, res.data]);
@@ -25,7 +25,7 @@ function Contacts() {
     }
 
     function getContacts() {
-        axios.get('http://localhost:3000/contact', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
+        axios.get('http://localhost:8080/contact', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
             .then((res) => {
                 console.log("Contacts from server", res.data)
                 setcontacts(res.data);

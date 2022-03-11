@@ -15,7 +15,7 @@ function Signin() {
     const handleSubmitClick = (e) => {
         e.preventDefault()
         try {
-            axios.post('http://localhost:3000/user/signin', {email, password})
+            axios.post('http://localhost:8080/user/signin', {email, password})
                 .then((res) => {
                     console.log("SIGNIN:- ", res.data);
                     localStorage.setItem('token', res.data.token)
