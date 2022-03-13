@@ -2,9 +2,13 @@ const express = require("express");
 const dotenv = require('dotenv').config()
 const cors = require('cors');
 const path = require('path');
-const connectDB = require('./config/db')
+const mongoose = require('mongoose')
 
-connectDB();
+const conn = mongoose.connect(process.env.MONGO_URI)
+    .then((res) => {
+        console.log(`MongoDB Connected`)
+    })
+    .catch((err) => console.log('MONGODB CONNECTION ERROR:-', err))
 
 const app = express();
 
@@ -22,6 +26,8 @@ app.get('/', (req, res) => {
 app.use('/user', require('./routes/user'));
 app.use('/contact', require('./routes/contact'));
 
-app.listen(process.env.PORT || 8080, () => {
-    console.log('Server running on port 3000');
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 })
